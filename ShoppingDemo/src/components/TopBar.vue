@@ -1,15 +1,15 @@
 <template>
   <div>
-    <mu-appbar title="Title">
-        <mu-icon-button icon='menu' slot="left" @click="toggle(true)"/>
-        <mu-flat-button label="登陆" class="demo-flat-button" slot="right" @click="openDialog()" />
-        <mu-dialog :open="dialog" title="登录" @close="close">
-          <LogIn></LogIn>
-          <mu-flat-button slot="actions" @click="close" primary label="取消"/>
-          <mu-flat-button slot="actions" primary @click="close" label="登录"/>
-        </mu-dialog>      
-    </mu-appbar>
-    
+      <mu-appbar title="Title">
+          <mu-icon-button icon='menu' slot="left" @click="toggle(true)"/>
+          <mu-flat-button label="登陆" class="demo-flat-button" slot="right" @click="openDialog()" />
+          <mu-dialog :open="dialog" title="登录" @close="close">
+            <mu-text-field label="账号" hintText="请输入账号" labelFloat v-model="user.username"/><br/>
+            <mu-text-field label="密码" hintText="请输入密码" type="password" v-model="user.password" labelFloat/><br/>
+            <mu-flat-button slot="actions" @click="close" primary label="取消"/>
+            <mu-flat-button slot="actions" primary @click="login" label="登录"/>
+          </mu-dialog>      
+      </mu-appbar>
     <mu-drawer :open="open" :docked="docked" @close="toggle()">
       <mu-list @itemClick="docked ? '' : toggle()">
         <mu-list-item title="Menu Item 1"/>
@@ -22,13 +22,16 @@
 </template>
 
 <script>
-import LogIn from '@/components/LogIn'
 export default {
   data () {
     return {
       open: false,
       docked: true,
-      dialog: false
+      dialog: false,
+      user : {
+        username : "",
+        password : ""
+      }
     }
   },
   methods: {
@@ -41,9 +44,15 @@ export default {
     },
     close () {
       this.dialog = false
+    },
+    login() {
+      this.$http.get('../../static/server/login.json').then(response => {
+        console.log(response.body);
+        if(this.user.username == response.body[0].username) alert("success");
+        else alert("error");
+      })
     }
-  },
-  components: { LogIn }
+  }
 }
 </script>
 
