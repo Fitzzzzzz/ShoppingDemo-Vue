@@ -1,16 +1,16 @@
 <template>
-    <div class="gridlist-demo-container">
-    <mu-grid-list class="gridlist-demo">
+    
+    <mu-grid-list>
         <mu-sub-header>所有饮料</mu-sub-header>
-            <mu-grid-tile v-for="item in goods">
+            <mu-grid-tile v-for="good in goods" :key="good.id">
             <img :src="img"/>
-            <span slot="title">{{item.title}}</span>
-            <span slot="subTitle">价格： <b>{{item.price}}</b></span>
+            <span slot="title">{{good.title}}</span>
+            <span slot="subTitle">价格： <b>{{good.price}}</b></span>
             <mu-icon-button icon="attach_money" slot="action"/>
             <mu-icon-button icon="add_shopping_cart" slot="action"/>
             </mu-grid-tile>
     </mu-grid-list>
-    </div>
+    
 </template>
 
 <script>

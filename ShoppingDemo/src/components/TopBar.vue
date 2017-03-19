@@ -1,7 +1,8 @@
 <template>
   <div>
-      <mu-appbar title="Title">
+      <mu-appbar title="Shopping Demo" titleClass="default">
           <mu-icon-button icon='menu' slot="left" @click="toggle(true)"/>
+          <mu-flat-button label="Shopping Demo" slot="left" @click="home"/>
           <mu-flat-button label="登陆" class="demo-flat-button" slot="right" @click="openDialog()" />
           <mu-dialog :open="dialog" title="登录" @close="close">
             <mu-text-field label="账号" hintText="请输入账号" labelFloat v-model="user.username"/><br/>
@@ -12,9 +13,10 @@
       </mu-appbar>
     <mu-drawer :open="open" :docked="docked" @close="toggle()">
       <mu-list @itemClick="docked ? '' : toggle()">
-        <mu-list-item title="Menu Item 1"/>
-        <mu-list-item title="Menu Item 2"/>
-        <mu-list-item title="Menu Item 3"/>
+        <router-link to="/1"> <mu-list-item title="饮料"/></router-link>         
+        <mu-list-item title="白酒"/>
+        <mu-list-item title="茶水"/>
+        <router-link to="ShoppingCart"><mu-list-item title="购物车"></mu-list-item></router-link>
         <mu-list-item v-if="docked" @click.native="open = false" title="Close"/>
       </mu-list>
     </mu-drawer>
@@ -22,6 +24,7 @@
 </template>
 
 <script>
+import router from '../router'
 export default {
   data () {
     return {
@@ -44,6 +47,9 @@ export default {
     },
     close () {
       this.dialog = false
+    },
+    home () {
+      router.push('/')
     },
     login() {
       this.$http.get('../../static/server/login.json').then(response => {
