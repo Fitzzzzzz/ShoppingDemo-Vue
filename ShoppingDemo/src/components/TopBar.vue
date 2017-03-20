@@ -54,8 +54,13 @@ export default {
     login() {
       this.$http.get('../../static/server/login.json').then(response => {
         console.log(response.body);
-        if(this.user.username == response.body[0].username) alert("success");
-        else alert("error");
+        if(this.user.username == response.body[0].username){
+           if(this.user.password === response.body[0].password){
+              this.dialog = false;
+              router.push('/ShoppingCart');
+           }else alert("password error");
+        }
+        else alert("Username or password error");
       })
     }
   }

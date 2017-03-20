@@ -1,5 +1,6 @@
 <template>
-    <mu-table>
+  <div>
+    <mu-table :multiSelectable="multiSelectable" :enableSelectAll="enableSelectAll">
         <mu-thead>
             <mu-tr>
             <mu-th>ID</mu-th>
@@ -10,7 +11,7 @@
             </mu-tr>
         </mu-thead>
         <mu-tbody>
-            <mu-tr v-for="(item, index) in goods" :key="item.id">
+            <mu-tr v-for="(item, index) in goods" :key="item.id" :selectable="selectable" :selected="selected">
             <mu-td>{{item.id}}</mu-td>
             <mu-td>{{item.title}}</mu-td>
             <mu-td>{{item.price}}</mu-td>
@@ -21,8 +22,13 @@
             </mu-td>
             <mu-td>{{item.price * item.count}}</mu-td>
             </mu-tr>            
-        </mu-tbody>
+        </mu-tbody>        
     </mu-table>
+    <mu-row>
+        <mu-col></mu-col>
+        <mu-col><mu-raised-button label="结账" secondary></mu-raised-button></mu-col>
+    </mu-row>
+  </div>
 </template>
 
 <script>
@@ -31,7 +37,11 @@
         data () {
             return {
                 goods : [],
-                disable : false
+                disable : false,
+                enableSelectAll : true,
+                multiSelectable : true,
+                selectable : true,
+                selected : true
             }
         },
         mounted() {
