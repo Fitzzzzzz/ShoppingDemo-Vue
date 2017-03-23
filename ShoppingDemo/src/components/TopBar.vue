@@ -21,7 +21,6 @@
         <router-link to="/1"> <mu-list-item title="饮料"/></router-link>         
         <mu-list-item title="白酒"/>
         <mu-list-item title="茶水"/>
-        <router-link to="ShoppingCart"><mu-list-item title="购物车"></mu-list-item></router-link>
         <mu-list-item v-if="docked" @click.native="open = false" title="Close"/>
       </mu-list>
     </mu-drawer>
