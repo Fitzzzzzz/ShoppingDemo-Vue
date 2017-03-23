@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import Contents from '@/components/Contents'
 import ShoppingCart from '@/components/ShoppingCart'
 import GoodsDetail from '@/components/GoodsDetail'
+import Admin from '@/components/Admin'
 
 Vue.use(Router)
 
@@ -27,6 +28,10 @@ export default new Router({
       path: '/detail',
       name: 'GoodsDetail',
       component: GoodsDetail
+    },
+    {
+      path: '/admin',
+      component: Admin
     }
   ]
 })

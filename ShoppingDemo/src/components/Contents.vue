@@ -1,15 +1,21 @@
 <template>
+    <mu-row>
+        <mu-col desktop="25"></mu-col>
+        <mu-col desktop="50">
+            <mu-grid-list>
+                <mu-sub-header>所有饮料</mu-sub-header>
+                    <mu-grid-tile v-for="(good, index) in goods" :key="good.id">
+                    <img :src="img" @click="showDetail(index)"/>
+                    <span slot="title">{{good.title}}</span>
+                    <span slot="subTitle">价格： <b>{{good.price}}</b></span>
+                    <mu-icon-button icon="attach_money" slot="action" />
+                    <mu-icon-button icon="add_shopping_cart" slot="action"/>
+                    </mu-grid-tile>
+            </mu-grid-list>
+        </mu-col>
+        <mu-col desktop="25"></mu-col>
+    </mu-row>
     
-    <mu-grid-list>
-        <mu-sub-header>所有饮料</mu-sub-header>
-            <mu-grid-tile v-for="(good, index) in goods" :key="good.id">
-            <img :src="img" @click="showDetail(index)"/>
-            <span slot="title">{{good.title}}</span>
-            <span slot="subTitle">价格： <b>{{good.price}}</b></span>
-            <mu-icon-button icon="attach_money" slot="action" />
-            <mu-icon-button icon="add_shopping_cart" slot="action"/>
-            </mu-grid-tile>
-    </mu-grid-list>
     
 </template>
 
