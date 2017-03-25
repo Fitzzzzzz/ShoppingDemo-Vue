@@ -29,7 +29,15 @@
     <div class="pay">
         <mu-row>
             <mu-col><h1>总价 {{totalPrice}}</h1></mu-col>
-            <mu-col><mu-raised-button label="结账" secondary></mu-raised-button></mu-col>
+            <mu-col>
+              <mu-raised-button label="结账" secondary @click="settle"></mu-raised-button>
+              <mu-dialog title="账户余额：100" :open="settleDialog" @close="close">
+                确定要支付吗？
+                <mu-flat-button secondary label="取消" slot="actions"></mu-flat-button>
+                <mu-flat-button secondary label="确定" slot="actions"></mu-flat-button>
+              </mu-dialog>
+            </mu-col>
+
         </mu-row>
     </div>
   </div>
@@ -43,7 +51,8 @@
                 goods : [],
                 disable : false,
                 selected : [false,false,false,false,false,false,false,false],
-                totalPrice : 0
+                totalPrice : 0,
+                settleDialog : false
             }
         },
         mounted() {
@@ -74,6 +83,12 @@
               }else{
                 this.totalPrice -= Number(this.goods[index].price * this.goods[index].count);
               }
+            },
+            settle(){
+              this.settleDialog = !this.settleDialog
+            },
+            close(){
+              this.settleDialog = !this.settleDialog
             }
         }
     }
