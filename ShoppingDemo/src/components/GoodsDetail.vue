@@ -1,6 +1,6 @@
 <template>
     <mu-paper>
-        <h1>this is goods # {{num}}</h1>
+        <h1>我是 {{details}} ，看起来好喝吧 ^.^</h1>
     </mu-paper>
 </template>
 
@@ -9,11 +9,15 @@
     export default {
         data(){
             return{
-                num : 0
+                goodsid : 0,
+                details : ""
             }
         },
         mounted(){
-            this.num = this.$route.params.id
+          this.$http.get("../../static/server/goods.json").then(response => {
+            this.details = response.body[this.$route.params.id].title;
+          })
+            this.goodsid = this.$route.params.id
         }
     }
 </script>

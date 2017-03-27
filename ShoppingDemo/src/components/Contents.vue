@@ -15,8 +15,8 @@
         </mu-col>
         <mu-col desktop="25"></mu-col>
     </mu-row>
-    
-    
+
+
 </template>
 
 <script>
@@ -26,7 +26,7 @@
         data(){
             return {
                 img,
-                goods : []                
+                goods : []
             }
         },
         mounted(){

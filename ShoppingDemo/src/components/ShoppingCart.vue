@@ -70,11 +70,12 @@
                 if(this.goods[index].count > 1) this.disable = false;
             },
             subtract(index){
+              if(this.selected[index] === true && this.goods[index].count > 1){
+                this.totalPrice -= Number(this.goods[index].price);
+              }
                 this.goods[index].count--;
                 if(this.goods[index].count < 1) this.goods[index].count = 1;
-                if(this.selected[index] === true){
-                  this.totalPrice -= Number(this.goods[index].price);
-                }
+
             },
             selectCheckBox(index){
               this.selected[index] = !this.selected[index];
