@@ -6,7 +6,7 @@
           <mu-flat-button :label="logname" class="demo-flat-button" slot="right" @click="loged ? openPopover() : openDialog()" />
             <mu-icon-menu icon="more_vert" slot="right" v-if="showMore">
               <mu-menu-item title="我的购物车" @click="toShoppingCart"/>
-              <mu-menu-item title="个人中心"/>
+              <router-link to="/admin"><mu-menu-item title="个人中心"/></router-link> 
               <mu-menu-item title="登出"/>
             </mu-icon-menu>
           <mu-dialog :open="dialog" title="登录" @close="close">
@@ -14,11 +14,11 @@
             <mu-text-field label="密码" hintText="请输入密码" type="password" v-model="user.password" labelFloat/><br/>
             <mu-flat-button slot="actions" @click="close" primary label="取消"/>
             <mu-flat-button slot="actions" primary @click="login" label="登录"/>
-          </mu-dialog>      
+          </mu-dialog>
       </mu-appbar>
     <mu-drawer :open="open" :docked="docked" @close="toggle()">
       <mu-list @itemClick="docked ? '' : toggle()">
-        <router-link to="/1"> <mu-list-item title="饮料"/></router-link>         
+        <router-link to="/1"> <mu-list-item title="饮料"/></router-link>
         <mu-list-item title="白酒"/>
         <mu-list-item title="茶水"/>
         <mu-list-item v-if="docked" @click.native="open = false" title="Close"/>
@@ -81,5 +81,5 @@ export default {
 </script>
 
 <style>
-    
+
 </style>

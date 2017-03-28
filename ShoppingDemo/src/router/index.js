@@ -5,6 +5,7 @@ import Contents from '@/components/Contents'
 import ShoppingCart from '@/components/ShoppingCart'
 import GoodsDetail from '@/components/GoodsDetail'
 import Admin from '@/components/Admin'
+import AddGoods from '@/components/Admin-add-goods'
 
 Vue.use(Router)
 
@@ -31,7 +32,13 @@ export default new Router({
     },
     {
       path: '/admin',
-      component: Admin
+      component: Admin,
+      children:[
+        {
+          path: 'add',
+          component: AddGoods
+        }
+      ]
     }
   ]
 })
