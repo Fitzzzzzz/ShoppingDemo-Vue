@@ -6,6 +6,7 @@ import ShoppingCart from '@/components/ShoppingCart'
 import GoodsDetail from '@/components/GoodsDetail'
 import Admin from '@/components/Admin'
 import AddGoods from '@/components/Admin-add-goods'
+import Undelivered from '@/components/Admin-undelivered'
 
 Vue.use(Router)
 
@@ -37,6 +38,10 @@ export default new Router({
         {
           path: 'add',
           component: AddGoods
+        },
+        {
+          path: 'undelivered',
+          component: Undelivered
         }
       ]
     }

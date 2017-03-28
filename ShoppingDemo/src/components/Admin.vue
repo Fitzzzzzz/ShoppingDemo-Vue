@@ -3,8 +3,8 @@
         <mu-row>
             <mu-col desktop="20">
                  <mu-paper :zDepth="zDepth" :rounded="rounded" class="init">
-                    <mu-list v-for="(item , index) in navTitles" :key="item.id">
-                        <mu-list-item :title="item.title" @click="goTo(index)">
+                    <mu-list v-for="(item , index) in navTitles" :key="item.id" >
+                        <mu-list-item :title="item.title" @click="goTo(index)" :class="{selected : index == currentItem}">
                         </mu-list-item>
                     </mu-list>
                 </mu-paper>
@@ -34,15 +34,20 @@ import router from "../router"
                     "title":"已完成订单"},
                   {"id":4,
                     "title":"待售后订单"}
-                ]
+                ],
+                currentItem: 0
             }
         },
-
         methods:{
           goTo(index){
             switch (index) {
               case 0:
+                this.currentItem = 0;
                 router.push('/admin/add');
+                break;
+              case 1:
+                this.currentItem = 1;
+                router.push('/admin/undelivered');
                 break;
               default:
 
@@ -55,5 +60,7 @@ import router from "../router"
     .init{
         height:770px
     }
-
+    .selected{
+      background-color: #e0e0e0
+    }
 </style>

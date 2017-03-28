@@ -2,14 +2,16 @@
     "count": "1",
     "id": "1",
     "title": "可口可乐",
-    "price": "3",
-    "count":3
+    "count":3,
+    "name":"UESTC",
+    "address":"xxxx"
   },
   {
     "count": "2",
     "id": "2",
     "title": "果粒橙",
-    "price": "3.5",
-    "count":1
+    "count":1,
+    "name":"UCLA",
+    "address":"yyyyy"
   }
 ]
